@@ -25,16 +25,51 @@ class record
 
 	}
 
-	bool operator==(const record& lhs,const record& rhs)
+
+	bool operator>(const record& lhs,const record& rhs)
 	{
+		if(lhs.get_size()>rhs.get_size()) return true;
 		if (lhs.get_size()==rhs.get_size())
 		{
-			
+			vector<char> left=lhs;
+			vector<char> right=rhs;
+			sort(left.begin(),left.end(),greater());
+			sort(right.begin(),right.end(),greater());
+			if(left>right) return true;
 		}
-		else return false;
+		return false;
 	}
-	
+	bool operator==(const record& lhs,const record& rhs)
+	{
+		
+		// sort(numbers.begin(), numbers.end(), greater());
+		if (lhs.get_size()==rhs.get_size())
+		{
+			vector<char> left=lhs;
+			vector<char> right=rhs;
+			sort(left.begin(),left.end(),greater());
+			sort(right.begin(),right.end(),greater());
+			if(left==right) return true;
+		}
+		return false;
+	}
 
+
+	bool operator>=(const record& lhs,const record& rhs)
+	{
+		return lhs>rhs || lhs==rhs;
+	}	
+
+
+	bool operator<(const record& lhs,const record& rhs)
+	{
+		return !(lhs>rhs || lhs==rhs);
+	}
+
+	bool operator<=(const record& lhs,const record& rhs)
+	{
+		return !(lhs>rhs);
+	}
 	private:
 	vector<char>  data;
 }
