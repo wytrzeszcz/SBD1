@@ -17,8 +17,9 @@ int print_help()
 }
 
 
-int gen(uint64_t base,uint64_t scale, int record_size=32)
+int gen(uint64_t base,uint64_t scale, int record_size=31)
 {
+	  srand (time(NULL));
 #ifdef DEBUG
 	cerr<< "base:"<<base<<endl;
 	cerr<< "scale:"<<scale<<endl;
@@ -27,12 +28,12 @@ int gen(uint64_t base,uint64_t scale, int record_size=32)
 	{
 		for(uint64_t j=0;j<base;j++)
 		{
-			int dice=rand()%record_size;
+			int dice=rand()%record_size+1;
 			for (int k=0;k<dice;k++)
 			{
 				cout<<rand()%10;
 			}
-			cout<<endl;
+			cout<<","<<endl;
 		}
 	}
 
